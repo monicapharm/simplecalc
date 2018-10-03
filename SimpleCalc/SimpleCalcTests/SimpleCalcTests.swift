@@ -13,7 +13,14 @@ class ExtendedCalcTests :XCTestCase {
     
     func testNegativeOps() {
         XCTAssert(calc.calculate(["2", "+", "-12"]) == -10)
+        XCTAssert(calc.calculate(["2", "/", "-1"]) == -2)
     }
+    
+    func testFloatOps() {
+        XCTAssert(calc.calculate(["10.22", "-", "5.11"]) == 5.11)
+        XCTAssert(calc.calculate(["10.22", "*", "5.11"]) == 52.2242)
+    }
+    
 }
 
 class SimpleCalcTests: XCTestCase {
@@ -46,6 +53,7 @@ class SimpleCalcTests: XCTestCase {
         XCTAssert(calc.calculate(["1", "fact"]) == 1)
         XCTAssert(calc.calculate(["2", "fact"]) == 2) // 2*1
         XCTAssert(calc.calculate(["5", "fact"]) == 120) // 5*4*3*2*1
+        XCTAssert(calc.calculate(["0", "fact"]) == 1) // ["0", "fact"] should also return 1.
         XCTAssert(calc.calculate(["fact"]) == 0)
     }
     
